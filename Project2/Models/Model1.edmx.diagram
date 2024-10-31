@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f716515bd5954304b8a6908f4fd3b420" Name="Diagram1">
+        <EntityTypeShape EntityType="Quanlysinhvienpj2Model.Giangvien" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Quanlysinhvienpj2Model.lophoc" Width="1.5" PointX="8.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Quanlysinhvienpj2Model.Nganhhoc1" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Quanlysinhvienpj2Model.Sinhvien" Width="1.5" PointX="6" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Quanlysinhvienpj2Model.sysdiagram" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Quanlysinhvienpj2Model.Truong" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Quanlysinhvienpj2Model.bangdiem" Width="1.5" PointX="8.25" PointY="4.125" IsExpanded="true" />
+        <AssociationConnector Association="Quanlysinhvienpj2Model.FK_Giangvien_Nganhhoc1" ManuallyRouted="false" />
+        <AssociationConnector Association="Quanlysinhvienpj2Model.FK_Giangvien_Truong" ManuallyRouted="false" />
+        <AssociationConnector Association="Quanlysinhvienpj2Model.FK_lophoc_Giangvien" ManuallyRouted="false" />
+        <AssociationConnector Association="Quanlysinhvienpj2Model.FK_lophoc_Sinhvien" ManuallyRouted="false" />
+        <AssociationConnector Association="Quanlysinhvienpj2Model.FK_Sinhvien_Nganhhoc1" ManuallyRouted="false" />
+        <AssociationConnector Association="Quanlysinhvienpj2Model.FK_bangdiem_Sinhvien" ManuallyRouted="false" />
+        <AssociationConnector Association="Quanlysinhvienpj2Model.FK_Sinhvien_Truong" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

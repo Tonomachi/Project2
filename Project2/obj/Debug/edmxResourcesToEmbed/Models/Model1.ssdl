@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Quanlysinhvienpj2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Quanlysinhvienpj2.dbo.bangdiem' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="bangdiem">
+    <Key>
+      <PropertyRef Name="Monhoc" />
+    </Key>
+    <Property Name="MaSv" Type="nvarchar" MaxLength="50" />
+    <Property Name="Diem" Type="nvarchar" MaxLength="50" />
+    <Property Name="Hocluc" Type="nvarchar" MaxLength="50" />
+    <Property Name="Monhoc" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Giangvien">
+    <Key>
+      <PropertyRef Name="MaGv" />
+    </Key>
+    <Property Name="MaGv" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="HoGv" Type="nvarchar" MaxLength="50" />
+    <Property Name="TenGv" Type="nvarchar" MaxLength="50" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Sdt" Type="nvarchar" MaxLength="50" />
+    <Property Name="Bangcap" Type="nvarchar" MaxLength="50" />
+    <Property Name="Nganh" Type="nvarchar" MaxLength="50" />
+    <Property Name="Namsinh" Type="date" />
+    <Property Name="Tentruong" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="lophoc">
+    <Key>
+      <PropertyRef Name="Malop" />
+    </Key>
+    <Property Name="Malop" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MaGv" Type="nvarchar" MaxLength="50" />
+    <Property Name="MaSv" Type="nvarchar" MaxLength="50" />
+    <Property Name="Monhoc" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Nganhhoc1">
+    <Key>
+      <PropertyRef Name="Nganh" />
+    </Key>
+    <Property Name="Nganh" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Monhoc" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Sinhvien">
+    <Key>
+      <PropertyRef Name="MaSv" />
+    </Key>
+    <Property Name="MaSv" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="HoSv" Type="nvarchar" MaxLength="50" />
+    <Property Name="TenSv" Type="nvarchar" MaxLength="50" />
+    <Property Name="Diachi" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Sdt" Type="nvarchar" MaxLength="50" />
+    <Property Name="NgaySinh" Type="date" />
+    <Property Name="Nganh" Type="nvarchar" MaxLength="50" />
+    <Property Name="Tentruong" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Truong">
+    <Key>
+      <PropertyRef Name="Tentruong" />
+    </Key>
+    <Property Name="Tentruong" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_bangdiem_Sinhvien">
+    <End Role="Sinhvien" Type="Self.Sinhvien" Multiplicity="0..1" />
+    <End Role="bangdiem" Type="Self.bangdiem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sinhvien">
+        <PropertyRef Name="MaSv" />
+      </Principal>
+      <Dependent Role="bangdiem">
+        <PropertyRef Name="MaSv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Giangvien_Nganhhoc1">
+    <End Role="Nganhhoc1" Type="Self.Nganhhoc1" Multiplicity="0..1" />
+    <End Role="Giangvien" Type="Self.Giangvien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nganhhoc1">
+        <PropertyRef Name="Nganh" />
+      </Principal>
+      <Dependent Role="Giangvien">
+        <PropertyRef Name="Nganh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Giangvien_Truong">
+    <End Role="Truong" Type="Self.Truong" Multiplicity="0..1" />
+    <End Role="Giangvien" Type="Self.Giangvien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Truong">
+        <PropertyRef Name="Tentruong" />
+      </Principal>
+      <Dependent Role="Giangvien">
+        <PropertyRef Name="Tentruong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_lophoc_Giangvien">
+    <End Role="Giangvien" Type="Self.Giangvien" Multiplicity="0..1" />
+    <End Role="lophoc" Type="Self.lophoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Giangvien">
+        <PropertyRef Name="MaGv" />
+      </Principal>
+      <Dependent Role="lophoc">
+        <PropertyRef Name="MaGv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_lophoc_Sinhvien">
+    <End Role="Sinhvien" Type="Self.Sinhvien" Multiplicity="0..1" />
+    <End Role="lophoc" Type="Self.lophoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sinhvien">
+        <PropertyRef Name="MaSv" />
+      </Principal>
+      <Dependent Role="lophoc">
+        <PropertyRef Name="MaSv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sinhvien_Nganhhoc1">
+    <End Role="Nganhhoc1" Type="Self.Nganhhoc1" Multiplicity="0..1" />
+    <End Role="Sinhvien" Type="Self.Sinhvien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nganhhoc1">
+        <PropertyRef Name="Nganh" />
+      </Principal>
+      <Dependent Role="Sinhvien">
+        <PropertyRef Name="Nganh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sinhvien_Truong">
+    <End Role="Truong" Type="Self.Truong" Multiplicity="0..1" />
+    <End Role="Sinhvien" Type="Self.Sinhvien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Truong">
+        <PropertyRef Name="Tentruong" />
+      </Principal>
+      <Dependent Role="Sinhvien">
+        <PropertyRef Name="Tentruong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="Quanlysinhvienpj2ModelStoreContainer">
+    <EntitySet Name="Giangvien" EntityType="Self.Giangvien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="lophoc" EntityType="Self.lophoc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Nganhhoc1" EntityType="Self.Nganhhoc1" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sinhvien" EntityType="Self.Sinhvien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Truong" EntityType="Self.Truong" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="bangdiem" EntityType="Self.bangdiem" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [bangdiem].[MaSv] AS [MaSv], 
+    [bangdiem].[Diem] AS [Diem], 
+    [bangdiem].[Hocluc] AS [Hocluc], 
+    [bangdiem].[Monhoc] AS [Monhoc]
+    FROM [dbo].[bangdiem] AS [bangdiem]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_bangdiem_Sinhvien" Association="Self.FK_bangdiem_Sinhvien">
+      <End Role="Sinhvien" EntitySet="Sinhvien" />
+      <End Role="bangdiem" EntitySet="bangdiem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Giangvien_Nganhhoc1" Association="Self.FK_Giangvien_Nganhhoc1">
+      <End Role="Nganhhoc1" EntitySet="Nganhhoc1" />
+      <End Role="Giangvien" EntitySet="Giangvien" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Giangvien_Truong" Association="Self.FK_Giangvien_Truong">
+      <End Role="Truong" EntitySet="Truong" />
+      <End Role="Giangvien" EntitySet="Giangvien" />
+    </AssociationSet>
+    <AssociationSet Name="FK_lophoc_Giangvien" Association="Self.FK_lophoc_Giangvien">
+      <End Role="Giangvien" EntitySet="Giangvien" />
+      <End Role="lophoc" EntitySet="lophoc" />
+    </AssociationSet>
+    <AssociationSet Name="FK_lophoc_Sinhvien" Association="Self.FK_lophoc_Sinhvien">
+      <End Role="Sinhvien" EntitySet="Sinhvien" />
+      <End Role="lophoc" EntitySet="lophoc" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sinhvien_Nganhhoc1" Association="Self.FK_Sinhvien_Nganhhoc1">
+      <End Role="Nganhhoc1" EntitySet="Nganhhoc1" />
+      <End Role="Sinhvien" EntitySet="Sinhvien" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sinhvien_Truong" Association="Self.FK_Sinhvien_Truong">
+      <End Role="Truong" EntitySet="Truong" />
+      <End Role="Sinhvien" EntitySet="Sinhvien" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

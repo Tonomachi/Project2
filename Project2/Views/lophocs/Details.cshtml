@@ -1,0 +1,42 @@
+﻿@model Project2.Models.lophoc
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>lophoc</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Monhoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Monhoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Giangvien.HoGv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Giangvien.HoGv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sinhvien.HoSv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sinhvien.HoSv)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Malop }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

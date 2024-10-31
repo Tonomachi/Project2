@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Quanlysinhvienpj2ModelStoreContainer" CdmEntityContainer="Quanlysinhvienpj2Entities">
+    <EntitySetMapping Name="Giangviens">
+      <EntityTypeMapping TypeName="Quanlysinhvienpj2Model.Giangvien">
+        <MappingFragment StoreEntitySet="Giangvien">
+          <ScalarProperty Name="MaGv" ColumnName="MaGv" />
+          <ScalarProperty Name="HoGv" ColumnName="HoGv" />
+          <ScalarProperty Name="TenGv" ColumnName="TenGv" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Sdt" ColumnName="Sdt" />
+          <ScalarProperty Name="Bangcap" ColumnName="Bangcap" />
+          <ScalarProperty Name="Nganh" ColumnName="Nganh" />
+          <ScalarProperty Name="Namsinh" ColumnName="Namsinh" />
+          <ScalarProperty Name="Tentruong" ColumnName="Tentruong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lophocs">
+      <EntityTypeMapping TypeName="Quanlysinhvienpj2Model.lophoc">
+        <MappingFragment StoreEntitySet="lophoc">
+          <ScalarProperty Name="Malop" ColumnName="Malop" />
+          <ScalarProperty Name="MaGv" ColumnName="MaGv" />
+          <ScalarProperty Name="MaSv" ColumnName="MaSv" />
+          <ScalarProperty Name="Monhoc" ColumnName="Monhoc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Nganhhoc1">
+      <EntityTypeMapping TypeName="Quanlysinhvienpj2Model.Nganhhoc1">
+        <MappingFragment StoreEntitySet="Nganhhoc1">
+          <ScalarProperty Name="Nganh" ColumnName="Nganh" />
+          <ScalarProperty Name="Monhoc" ColumnName="Monhoc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sinhviens">
+      <EntityTypeMapping TypeName="Quanlysinhvienpj2Model.Sinhvien">
+        <MappingFragment StoreEntitySet="Sinhvien">
+          <ScalarProperty Name="MaSv" ColumnName="MaSv" />
+          <ScalarProperty Name="HoSv" ColumnName="HoSv" />
+          <ScalarProperty Name="TenSv" ColumnName="TenSv" />
+          <ScalarProperty Name="Diachi" ColumnName="Diachi" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Sdt" ColumnName="Sdt" />
+          <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+          <ScalarProperty Name="Nganh" ColumnName="Nganh" />
+          <ScalarProperty Name="Tentruong" ColumnName="Tentruong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Quanlysinhvienpj2Model.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Truongs">
+      <EntityTypeMapping TypeName="Quanlysinhvienpj2Model.Truong">
+        <MappingFragment StoreEntitySet="Truong">
+          <ScalarProperty Name="Tentruong" ColumnName="Tentruong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bangdiems">
+      <EntityTypeMapping TypeName="Quanlysinhvienpj2Model.bangdiem">
+        <MappingFragment StoreEntitySet="bangdiem">
+          <ScalarProperty Name="MaSv" ColumnName="MaSv" />
+          <ScalarProperty Name="Diem" ColumnName="Diem" />
+          <ScalarProperty Name="Hocluc" ColumnName="Hocluc" />
+          <ScalarProperty Name="Monhoc" ColumnName="Monhoc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Quanlysinhvienpj2Model.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Quanlysinhvienpj2Model.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Quanlysinhvienpj2Model.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Quanlysinhvienpj2Model.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Quanlysinhvienpj2Model.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Quanlysinhvienpj2Model.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Quanlysinhvienpj2Model.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Quanlysinhvienpj2Model.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Quanlysinhvienpj2Model.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

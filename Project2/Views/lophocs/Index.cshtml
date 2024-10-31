@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Project2.Models.lophoc>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Monhoc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Giangvien.HoGv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sinhvien.HoSv)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Monhoc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Giangvien.HoGv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sinhvien.HoSv)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Malop }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Malop }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Malop })
+        </td>
+    </tr>
+}
+
+</table>
